@@ -155,4 +155,54 @@ public class VladimirovaSteosDefs {
         WebElement sbutton = getDriver().findElement(By.xpath("//button[@type='submit']"));
         sbutton.click();
     }
+
+    @And("AV I enter text {string} for option number {int} in question number {int}")
+    public void avIEnterTextForOptionNumberInQuestionNumber(String optText, int optNum, int questNum) {
+        WebElement optTitle = getDriver().findElement(By.xpath("//*[contains(text(), 'Q" + questNum + "')]//ancestor::mat-expansion-panel//child::textarea[@formcontrolname='option' and contains(@placeholder,'Option " + optNum + "')]"));
+        optTitle.sendKeys(optText);
+    }
+
+    @And("AV I choose option number {int} as correct option for {string} question type for question number {int}")
+    public void avIChooseOptionNumberAsCorrectOptionForQuestionTypeForQuestionNumber(int optNum, String questType, int questNum) {
+        switch (questType){
+            case "single-choice":
+                WebElement corrSOpt = getDriver().findElement(By.xpath("//*[contains(text(), 'Q" + questNum + "')]//ancestor::mat-expansion-panel//child::label[contains(text(),'Option " + optNum + "')]//ancestor::mat-radio-group//child::div[@class='mat-radio-container']"));
+                corrSOpt.click();
+                break;
+            case "multiple-choice":
+                WebElement corrMOpt = getDriver().findElement(By.xpath("//*[contains(text(), 'Q" + questNum + "')]//ancestor::mat-expansion-panel//child::label[contains(text(),'Option " + optNum + "')]//ancestor::div[contains(@class,'option-row')]//child::div[contains(@class,'mat-checkbox-inner-container')]"));
+                corrMOpt.click();
+                break;
+            default:
+                fail("Wrong question type");
+        }
+    }
+
+    @And("AV I add {int} options for question {int}")
+    public void avIAddOptionsForQuestion(int optNum, int questNum) {
+        for (int i = 0; i < optNum; i++){
+            WebElement addOptionButton = getDriver().findElement(By.xpath("//*[contains(text(), 'Q" + questNum + "')]//ancestor::mat-expansion-panel//child::button[./span[contains(text(),'Add Option')]]"));
+            addOptionButton.click();
+        }
+    }
+
+    @Then("AV assignment with quiz name {string} should have result {string}")
+    public void avAssignmentWithQuizNameShouldHaveResult(String quizName, String res) {
+        LocalDate myDate = LocalDate.now();
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MM/dd/yy");
+        String currDate = myDate.format(dateFormat);
+        WebElement quiz = getDriver().findElement(By.xpath("//td[contains(text(),'" + currDate + "')]//ancestor::tr//child::td[contains(text(),'" + quizName + "')]//ancestor::tr//child::td[@class='result']"));
+        String actualText = quiz.getText();
+        assertThat(actualText).containsIgnoringCase(res);
+    }
+
+    @Then("AV assignment with quiz name {string} should have score {string}")
+    public void avAssignmentWithQuizNameShouldHaveScore(String quizName, String score) {
+        LocalDate myDate = LocalDate.now();
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MM/dd/yy");
+        String currDate = myDate.format(dateFormat);
+        WebElement quiz = getDriver().findElement(By.xpath("//td[contains(text(),'" + currDate + "')]//ancestor::tr//child::td[contains(text(),'" + quizName + "')]//ancestor::tr//child::td[@class='ng-star-inserted']"));
+        String actualText = quiz.getText();
+        assertThat(actualText).containsIgnoringCase(score);
+    }
 }
