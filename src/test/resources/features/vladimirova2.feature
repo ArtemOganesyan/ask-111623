@@ -1,8 +1,8 @@
-@textual_questions_points_testSet_textual_not_textual_can_not_graded_automatically
-Feature: Textual questions - points test set: Verify quiz with textual and non-textual questions is not fully graded automatically
+@av_textual_questions_points_testSet_textual_not_textual_can_not_graded_automatically
+Feature: AV Textual questions - points test set: Verify quiz with textual and non-textual questions is not fully graded automatically
 
-  @textual_not_textual_can_not_graded_automatically_teacher
-  Scenario Outline: Verify textual questions can not be graded automatically (teacher part)
+  @av_textual_not_textual_can_not_graded_automatically_teacher
+  Scenario Outline: AV Verify textual questions can not be graded automatically (teacher part)
     Given AV I navigate to "login" page
     Then I should see page title contains "Assessment Control @ Portnov"
     When AV I login into teacher account
@@ -56,8 +56,8 @@ Feature: Textual questions - points test set: Verify quiz with textual and non-t
       | quizName |
       | Ava autom text and not text |
 
-  @textual_not_textual_can_not_graded_automatically_student
-  Scenario Outline: Verify textual questions can not be graded automatically (student part)
+  @av_textual_not_textual_can_not_graded_automatically_student
+  Scenario Outline: AV Verify textual questions can not be graded automatically (student part)
     Given AV I navigate to "login" page
     And AV I login into Ava Stud student account
     Then AV I verify user name "Ava Stud" and role "STUDENT"

@@ -205,4 +205,83 @@ public class VladimirovaSteosDefs {
         String actualText = quiz.getText();
         assertThat(actualText).containsIgnoringCase(score);
     }
+
+    @And("AV I mark question number {int} as Show-Stopper question")
+    public void avIMarkQuestionNumberAsShowStopperQuestion(int questNum) {
+        WebElement check = getDriver().findElement(By.xpath("//*[contains(text(), 'Q" + questNum + "')]//ancestor::mat-expansion-panel//child::span[contains(text(),'Show-Stopper')]//ancestor::label//child::div[@class='mat-checkbox-inner-container']"));
+        check.click();
+    }
+
+    @And("AV I mark option {int} as my answer for question number {int}")
+    public void avIMarkOptionAsMyAnswerForQuestionNumber(int optNum, int questNum) {
+        WebElement corrOpt = getDriver().findElement(By.xpath("//h5[contains(text(),'Question " + questNum + "')]//ancestor::mat-card//child::div[contains(text(),'Option " + optNum + "')]//ancestor::mat-radio-button//child::div[@class='mat-radio-container']"));
+        corrOpt.click();
+    }
+
+    @And("AV I click on Details button for assignment with quiz name  {string}")
+    public void avIClickOnDetailsButtonForAssignmentWithQuizName(String quizName) {
+        LocalDate myDate = LocalDate.now();
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MM/dd/yy");
+        String currDate = myDate.format(dateFormat);
+        WebElement bDetails = getDriver().findElement(By.xpath("//td[contains(text(),'" + currDate + "')]//ancestor::tr//child::td[contains(text(),'" + quizName + "')]//ancestor::tr//child::button"));
+        bDetails.click();
+    }
+
+    @Then("AV Actual score points amount should be {string} than Passing score points amount")
+    public void avActualScorePointsAmountShouldBeThanPassingScorePointsAmount(String compOp) {
+        WebElement passP = getDriver().findElement(By.xpath("//td[contains(text(),'Passing points / percentage:')]//following-sibling::td"));
+        WebElement actP = getDriver().findElement(By.xpath("//td[contains(text(),'Actual points / percentage:')]//following-sibling::td"));
+        String passPS =  passP.getText();
+        String actPS = actP.getText();
+        String[] passPArr = passPS.split(" ", 0);
+        String[] actPArr = actPS.split(" ", 0);
+        int passScore = Integer.parseInt(passPArr[0]);
+        int actScore = Integer.parseInt(actPArr[0]);
+
+        switch (compOp){
+            case "greater":
+                assertThat(actScore).isGreaterThan(passScore);
+                System.out.println(actScore + " > " + passScore);
+                break;
+            case "less":
+                assertThat(actScore).isLessThan(passScore);
+                System.out.println(actScore + " < " + passScore);
+                break;
+            case "equal":
+                assertThat(actScore).isEqualTo(passScore);
+                System.out.println(actScore + " = " + passScore);
+                break;
+            default:
+                fail("Wrong comparison operator");
+        }
+    }
+
+    @Then("AV Actual percentage amount should be {string} than Passing percentage points amount")
+    public void avActualPercentageAmountShouldBeThanPassingPercentagePointsAmount(String compOp) {
+        WebElement passP = getDriver().findElement(By.xpath("//td[contains(text(),'Passing points / percentage:')]//following-sibling::td"));
+        WebElement actP = getDriver().findElement(By.xpath("//td[contains(text(),'Actual points / percentage:')]//following-sibling::td"));
+        String passPS =  passP.getText();
+        String actPS = actP.getText();
+        String[] passPArr = passPS.split(" ", 0);
+        String[] actPArr = actPS.split(" ", 0);
+        int passPercent = Integer.parseInt(passPArr[4].replace("%", ""));
+        int actPercent = Integer.parseInt(actPArr[4].replace("%", ""));
+
+        switch (compOp){
+            case "greater":
+                assertThat(actPercent).isGreaterThan(passPercent);
+                System.out.println(actPercent + " > " + passPercent);
+                break;
+            case "less":
+                assertThat(actPercent).isLessThan(passPercent);
+                System.out.println(actPercent + " < " + passPercent);
+                break;
+            case "equal":
+                assertThat(actPercent).isEqualTo(passPercent);
+                System.out.println(actPercent + " = " + passPercent);
+                break;
+            default:
+                fail("Wrong comparison operator");
+        }
+    }
 }
