@@ -9,7 +9,7 @@ Feature: Kiian_E2E
 
 
   @kiian_creatingNewQuiz
-  Scenario: Kiian_Creating new single choice question quiz
+  Scenario: Kiian Creating new single choice question quiz
     Then I wait for element with xpath "//a[@href='/#/quizzes']" to be present
     Then I click on element with xpath "//a[@href='/#/quizzes']"
     Then I wait for element with xpath "//a[@href='#/quiz-builder']" to be present
@@ -22,7 +22,7 @@ Feature: Kiian_E2E
     Then I type "Bill Le" into element with xpath "//*[contains(text(), 'Q1')]/../../../..//label[contains(text(), 'Option 1')]/../..//textarea"
     Then I type "Bill King" into element with xpath "//*[contains(text(), 'Q1')]/../../../..//label[contains(text(), 'Option 2')]/../..//textarea"
     Then I click on element with xpath "//*[contains(text(),'Option 1')]/../../../../../..//label"
-    And I move question slider 3 step to the "right"
+    And Kiian I move question slider 3 step to the "right"
     Then I wait for 2 sec
     Then I click on element with xpath "//*[contains(text(),'Save')]/.."
 
