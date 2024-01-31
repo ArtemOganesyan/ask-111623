@@ -37,3 +37,5 @@ Test from Olga \
 test from o \
 A Vladimirova
 new line
+A Vladimirova \
+Testing R
