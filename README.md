@@ -2,6 +2,7 @@
 
 Base framework for Java Webdriver automation with Cucumber
 
+Anastasiia Vladimirova \
 Megha Kolte \
 Artem Oganesyan \
 Anastasiia Kiian \
