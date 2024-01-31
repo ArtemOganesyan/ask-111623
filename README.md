@@ -11,6 +11,7 @@ Artem Oganesyan \
 Anastasiia Kiian \
 Maryna Palii \
 Arthy Jk \
+arthyjk@gmail.com \
 olha fedorchuk \
 Oleg Mandryk \
 rathi b
