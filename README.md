@@ -9,6 +9,7 @@ anatoliy.nk84@gmail.com \
 Evgenii Vlasov \
 evgenyvlasov85@gmail.com \
 Anastasiia Vladimirova \
+asya_ogn@mail.com \
 Megha Kolte \
 *megha90@gmail.com\
 Artem Oganesyan \
