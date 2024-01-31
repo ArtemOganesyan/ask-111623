@@ -9,7 +9,7 @@ import static support.TestContext.getDriver;
 
 public class Kiian_StepDefs implements En {
 
-    @And("Kiian_I move question slider {int} step to the {string}")
+    @And("Kiian I move question slider {int} step to the {string}")
     public void iMoveSliderStepToThe(int steps, String direction) {
         WebElement slider = getDriver().findElement(By.xpath("//*[contains(text(), 'Q1')]/../../..//mat-slider"));
         for (int i = 0; i < steps; i++) {
