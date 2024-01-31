@@ -2,5 +2,6 @@
 
 Base framework for Java Webdriver automation with Cucumber
 
-olha fedorchuk
-Oleg Mandryk
+Arthy Jk \
+olha fedorchuk \
+Oleg Mandryk \
