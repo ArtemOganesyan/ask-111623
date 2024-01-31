@@ -13,5 +13,6 @@ Maryna Palii \
 Arthy Jk \
 olha fedorchuk \
 Oleg Mandryk \
+oleg.mandryk@gmail.com \
 rathi b
 ---------
