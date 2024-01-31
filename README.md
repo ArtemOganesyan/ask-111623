@@ -2,5 +2,8 @@
 
 Base framework for Java Webdriver automation with Cucumber
 
-Anastasiia Kiian 
-
+Anastasiia Kiian \
+Maryna Palii \
+Arthy Jk \
+olha fedorchuk \
+Oleg Mandryk
