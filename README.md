@@ -6,6 +6,7 @@ Daria Ushakova \
 Anatoliy \
 Evgenii Vlasov \
 Anastasiia Vladimirova \
+asya_ogn@mail.com \
 Megha Kolte \
 Artem Oganesyan \
 Anastasiia Kiian \
