@@ -6,6 +6,7 @@ Daria Ushakova \
 Anatoliy \
 anatoliy.nk84@gmail.com \
 Evgenii Vlasov \
+evgenyvlasov85@gmail.com \
 Anastasiia Vladimirova \
 Megha Kolte \
 *megha90@gmail.com\
