@@ -8,6 +8,7 @@ Evgenii Vlasov \
 Anastasiia Vladimirova \
 Megha Kolte \
 Artem Oganesyan \
+anastasijakiyan@gmail.com
 Anastasiia Kiian \
 Maryna Palii \
 Arthy Jk \
