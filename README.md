@@ -11,4 +11,5 @@ Anastasiia Kiian \
 Maryna Palii \
 Arthy Jk \
 olha fedorchuk \
-Oleg Mandryk
+Oleg Mandryk \
+---------
