@@ -12,6 +12,7 @@ artem.oganesyan@gmail.com\
 Anastasiia Kiian \
 Maryna Palii \
 Arthy Jk \
+arthyjk@gmail.com \
 olha fedorchuk \
 fedorchuk.o.1991@gmail.com
 Oleg Mandryk \
