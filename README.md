@@ -22,12 +22,13 @@ arthyjk@gmail.com \
 olha fedorchuk \
 fedorchuk.o.1991@gmail.com
 Oleg Mandryk \
+oleg.mandryk@gmail.com \
 rathi b
 Olga Pikuza \
 o.pikuza88@gmail.com \
 rathi b \
 shiv.rathibala@gmail.com
 ---------
-
+Test from Oleg \
 Test from Artem \
 Test from Olga
