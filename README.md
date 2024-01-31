@@ -7,6 +7,7 @@ Anatoliy \
 Evgenii Vlasov \
 Anastasiia Vladimirova \
 Megha Kolte \
+*megha90@gmail.com\
 Artem Oganesyan \
 artem.oganesyan@gmail.com\
 Anastasiia Kiian \
