@@ -15,6 +15,7 @@ Artem Oganesyan \
 artem.oganesyan@gmail.com\
 Anastasiia Kiian \
 Maryna Palii \
+nomerovska@gmail.com \
 Arthy Jk \
 arthyjk@gmail.com \
 olha fedorchuk \
