@@ -14,4 +14,6 @@ Arthy Jk \
 olha fedorchuk \
 Oleg Mandryk \
 rathi b
+Olga Pikuza \
+o.pikuza88@gmail.com
 ---------
