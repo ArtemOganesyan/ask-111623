@@ -14,6 +14,7 @@ Megha Kolte \
 *megha90@gmail.com\
 Artem Oganesyan \
 artem.oganesyan@gmail.com\
+anastasijakiyan@gmail.com \
 Anastasiia Kiian \
 Maryna Palii \
 nomerovska@gmail.com \
@@ -36,5 +37,7 @@ Test from Oleg \
 Test from Artem \
 Test from Olga \
 test from o \
+A Vladimirova
+new line
 A Vladimirova \
 Testing R
