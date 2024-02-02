@@ -2,6 +2,7 @@
 
 Base framework for Java Webdriver automation with Cucumber
 
+Test
 Daria Ushakova \
 daxxria11@gmail.com
 Anatoliy \
@@ -29,3 +30,11 @@ rathi b \
 shiv.rathibala@gmail.com
 ---------
 nomerovska@gmail.com \
+
+Test from Artem \
+Test from Oleg \
+Test from Artem \
+Test from Olga \
+test from o \
+A Vladimirova \
+Testing R
