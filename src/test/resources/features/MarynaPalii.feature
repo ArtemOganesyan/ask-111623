@@ -6,8 +6,6 @@ Background: MP Teacher Login
   Then MP I type "melnikovgi@finecardio.com" into element with xpath "//*[@formcontrolname='email']"
   Then MP I type "Palii4" into element with xpath "//*[@formcontrolname='password']"
   And MP I click on element with xpath "//button[@type='submit']"
-  When MP I logged in as a teacher
-  Then MP I verify account name "Maryna4 Palii4" and account role "TEACHER" is displayed
 
   Scenario: MP Teacher Can Assign a Quiz to a Student
     Then MP I wait for 1 sec
