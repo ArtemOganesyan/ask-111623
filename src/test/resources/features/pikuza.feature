@@ -30,6 +30,10 @@
       And I click on element with xpath "//button[@type='button' and contains(span[@class='mat-button-wrapper'], 'Change')]"
       And I click on element with xpath "//h5[text()='Log Out']"
       And I click on element with xpath "//button[@type='button' and contains(span[@class='mat-button-wrapper'], 'Log Out')]"
+      Then I wait for element with xpath "//h5[contains(text(), 'Portnov')]" to be present
+      Then I type "o.pikuza88@gmail.com" into element with xpath "//*[@formcontrolname='email']"
+      Then I type "<oldPassword>" into element with xpath "//*[@formcontrolname='password']"
+      Then I click on element with xpath "//button[@type='submit']"
 
       Examples:
         | oldPassword  | newPassword  |
