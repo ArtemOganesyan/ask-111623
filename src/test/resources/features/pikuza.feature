@@ -2,7 +2,7 @@
   Feature: Pikuza E2E Tests
 
     @pikuza-e2e-student-change-password
-    Scenario Outline: E2E Pikuza Student change password
+    Scenario Outline: E2E Pikuza Olga Student change password
       Given I open url "http://ask-stage.portnov.com"
       Then I type "o.pikuza88@gmail.com" into element with xpath "//*[@formcontrolname='email']"
       Then I type "<oldPassword>" into element with xpath "//*[@formcontrolname='password']"
