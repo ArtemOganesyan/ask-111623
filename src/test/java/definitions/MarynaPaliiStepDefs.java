@@ -231,5 +231,10 @@ public class MarynaPaliiStepDefs {
         
     }
 
+    @Then("MP element with xpath {string}cdk-overlay{int}{string} should be displayed")
+    public void mpElementWithXpathCdkOverlayShouldBeDisplayed(String arg0, int arg1, String arg2) {
+    }
+
+
 }
 
