@@ -1,5 +1,5 @@
 @katyag_feature
-  Feature: AV Multiple Choice Questions
+  Feature: Multiple Choice Questions
 
     @katyag_test_scenario1
     Scenario: Verify that multiple choice question allows teacher to include “other” text area option in quiz
