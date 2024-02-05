@@ -2,6 +2,10 @@
 
 Base framework for Java Webdriver automation with Cucumber
 
+Create changes in Git\
+bagy21@gmail.com\
+bagy
+
 Daria Ushakova \
 daxxria11@gmail.com
 Anatoliy \
