@@ -1,4 +1,4 @@
-@av_textual_questions_points_test_set_textual_can_not_graded_automatically
+@katyag_feature1
 Feature: AV Textual questions - points test set: Verify textual questions can not be graded automatically
 
   @av_textual_can_not_graded_automatically_teacher
