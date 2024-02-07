@@ -109,7 +109,7 @@ Feature: Smoke steps
     Then element with xpath "//div[contains(text(),'ASSESSMENT FAILED')]" should be displayed
     Then I wait for 2 sec
 
-  @test-scenario-graded-automatically
+  @aj-test-scenario-graded-automatically
   Scenario: Test scenario [T] Submission Status - Automatically Graded Assignments
     Given I open url "http://ask-stage.portnov.com"
     Then I should see page title as "Assessment Control @ Portnov"
@@ -126,7 +126,7 @@ Feature: Smoke steps
     Then element with xpath "//div[contains(text(),'ASSESSMENT FAILED')]" should be displayed
     Then I wait for 2 sec
 
-  @test-scenario-grade-review
+  @aj-test-scenario-grade-review
   Scenario: Test scenario [T] Submission Status - Reviewed Assignments
     Given I open url "http://ask-stage.portnov.com"
     Then I should see page title as "Assessment Control @ Portnov"
@@ -142,7 +142,7 @@ Feature: Smoke steps
     Then element with xpath "//div[contains(text(),'ASSESSMENT PASSED')]" should be displayed
     Then I wait for 2 sec
 
-  @test-scenario-submissionstatus
+  @aj-test-scenario-submissionstatus
   Scenario: Test scenario [S] Submission Status
     Given I open url "http://ask-stage.portnov.com"
     Then I should see page title as "Assessment Control @ Portnov"
@@ -157,7 +157,7 @@ Feature: Smoke steps
     Then element with xpath "//div[contains(text(),'ASSESSMENT PASSED')]" should be displayed
     Then I wait for 2 sec
 
-  @test-scenario-submitandview-assignment-status
+  @aj-test-scenario-submitandview-assignment-status
   Scenario: Test scenario [S] Submit Assignment & View Submission Status
     Given I open url "http://ask-stage.portnov.com"
     Then I should see page title as "Assessment Control @ Portnov"
