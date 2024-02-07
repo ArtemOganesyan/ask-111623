@@ -1,11 +1,15 @@
 package definitions;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import cucumber.api.java8.En;
 import cucumber.api.java.en.And;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import static support.TestContext.getDriver;
+
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import support.Helper;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -31,5 +35,14 @@ public class Kiian_StepDefs implements En {
         int userId = Integer.parseInt(str[0]);
         String activationCode = str[1];
         Helper.activateUser(userId, activationCode);
+    }
+
+    @Then("Kiian I wait for element with xpath {string} to be displayed")
+    public void iWaitForElementWithXpathToBeDisplayed(String xpath) {
+        new WebDriverWait(getDriver(), 10, 200).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+    }
+
+    @Then("Kiian I type {string} into element with xpath {string}")
+    public void kiianITypePasswordIntoElementWithXpath(String password, String xpath) {
     }
 }
