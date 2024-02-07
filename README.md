@@ -2,6 +2,10 @@
 
 Base framework for Java Webdriver automation with Cucumber
 
+Create changes in Git\
+bagy21@gmail.com\
+bagy
+
 Daria Ushakova \
 daxxria11@gmail.com
 Anatoliy \
@@ -29,10 +33,15 @@ rathi b \
 shiv.rathibala@gmail.com
 ---------
 
+Test from Megha \
 Test from Artem \
 Test from Oleg \
+Test from Anastasiia
 Test from Artem \
 Test from Olga \
 test from o \
+A Vladimirova
+new line 
 A Vladimirova \
 Testing R
+Test
