@@ -29,6 +29,10 @@ public class VladimirovaSteosDefs {
             case "login":
                 getDriver().get("http://ask-stage.portnov.com/");
                 break;
+            case "Submissions":
+                WebElement iTSubm = getDriver().findElement(By.xpath("//h5[contains(text(),'Submissions')]//ancestor::a"));
+                iTSubm.click();
+                break;
             case "Assignments":
                 WebElement iTAssign = getDriver().findElement(By.xpath("//h5[contains(text(),'Assignments')]//ancestor::a"));
                 iTAssign.click();
@@ -46,9 +50,14 @@ public class VladimirovaSteosDefs {
                 iSAssign.click();
                 break;
             case "My Grades":
-                Thread.sleep(1 * 1000);
+                Thread.sleep(1000);
                 WebElement iSGrades = getDriver().findElement(By.xpath("//h5[contains(text(),'My Grades')]//ancestor::a"));
                 iSGrades.click();
+                WebElement title = getDriver().findElement(By.xpath("//h4[contains(text(),'My Grades')]"));
+                new WebDriverWait(getDriver(), 5, 200).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h4[contains(text(),'My Grades')]")));
+                if (!title.isDisplayed()){
+                    iSGrades.click();
+                }
                 break;
             case "Settings":
                 WebElement iSSettings = getDriver().findElement(By.xpath("//h5[contains(text(),'Settings')]//ancestor::a"));
@@ -147,13 +156,14 @@ public class VladimirovaSteosDefs {
     }
 
     @And("AV I login into Ava Stud student account")
-    public void avILoginIntoAvaStudStudentAccount() {
+    public void avILoginIntoAvaStudStudentAccount() throws InterruptedException {
         WebElement login = getDriver().findElement(By.xpath("//input[@formcontrolname='email']"));
         WebElement passw = getDriver().findElement(By.xpath("//input[@formcontrolname='password']"));
         login.sendKeys("avstud@vaievem.tk");
         passw.sendKeys("passw123");
         WebElement sbutton = getDriver().findElement(By.xpath("//button[@type='submit']"));
         sbutton.click();
+        Thread.sleep(2000);
     }
 
     @And("AV I enter text {string} for option number {int} in question number {int}")
@@ -188,20 +198,14 @@ public class VladimirovaSteosDefs {
 
     @Then("AV assignment with quiz name {string} should have result {string}")
     public void avAssignmentWithQuizNameShouldHaveResult(String quizName, String res) {
-        LocalDate myDate = LocalDate.now();
-        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MM/dd/yy");
-        String currDate = myDate.format(dateFormat);
-        WebElement quiz = getDriver().findElement(By.xpath("//td[contains(text(),'" + currDate + "')]//ancestor::tr//child::td[contains(text(),'" + quizName + "')]//ancestor::tr//child::td[@class='result']"));
+        WebElement quiz = getDriver().findElement(By.xpath("//tr[last()]/td[@class='result']"));
         String actualText = quiz.getText();
         assertThat(actualText).containsIgnoringCase(res);
     }
 
     @Then("AV assignment with quiz name {string} should have score {string}")
     public void avAssignmentWithQuizNameShouldHaveScore(String quizName, String score) {
-        LocalDate myDate = LocalDate.now();
-        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MM/dd/yy");
-        String currDate = myDate.format(dateFormat);
-        WebElement quiz = getDriver().findElement(By.xpath("//td[contains(text(),'" + currDate + "')]//ancestor::tr//child::td[contains(text(),'" + quizName + "')]//ancestor::tr//child::td[@class='ng-star-inserted']"));
+        WebElement quiz = getDriver().findElement(By.xpath("//tr[last()]/td[@class='ng-star-inserted']"));
         String actualText = quiz.getText();
         assertThat(actualText).containsIgnoringCase(score);
     }
@@ -282,6 +286,23 @@ public class VladimirovaSteosDefs {
                 break;
             default:
                 fail("Wrong comparison operator");
+        }
+    }
+
+    @And("AV I click on Grade button for assignment with quiz name  {string}")
+    public void avIClickOnGradeButtonForAssignmentWithQuizName(String quizName) {
+        LocalDate myDate = LocalDate.now();
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MM/dd/yy");
+        String currDate = myDate.format(dateFormat);
+        WebElement bGrade = getDriver().findElement(By.xpath("//td[contains(text(),'" + currDate + "')]//ancestor::tr//child::td[contains(text(),'" + quizName + "')]//ancestor::tr//child::button"));
+        bGrade.click();
+    }
+
+    @And("AV I add {int} points for question number {int}")
+    public void avIAddPointsForQuestionNumber(int points, int questNum) {
+        WebElement addPointsButton = getDriver().findElement(By.xpath("//*[contains(text(),'Question " + questNum + "')]//ancestor::mat-card/..//child::div[@class='buttons']/button/span[contains(text(),'+')]/.."));
+        for (int i = 0; i < points; i++){
+            addPointsButton.click();
         }
     }
 }
