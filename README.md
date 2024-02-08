@@ -32,6 +32,13 @@ o.pikuza88@gmail.com \
 rathi b \
 shiv.rathibala@gmail.com
 ---------
+<<<<<<< HEAD
+Test from Oleg \
+Test from Artem \
+Test from Olga \
+test from o \
+☺☺☺
+=======
 
 Test from Megha \
 Test from Artem \
@@ -45,3 +52,4 @@ new line
 A Vladimirova \
 Testing R
 Test
+>>>>>>> main
