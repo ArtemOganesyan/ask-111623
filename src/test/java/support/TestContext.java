@@ -1,4 +1,3 @@
-// Created by Viacheslav (Slava) Skryabin 04/01/2011
 package support;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -32,14 +31,14 @@ public class TestContext {
     }
 
     public static void initialize() {
-        initialize("chrome", "local", false);
+        initialize("chrome", "local", false, false);
     }
 
     public static void teardown() {
         driver.quit();
     }
 
-    public static void initialize(String browser, String testEnv, boolean isHeadless) {
+    public static void initialize(String browser, String testEnv, boolean isHeadless, boolean isJenkins) {
         Dimension size = new Dimension(1920, 1080);
         Point position = new Point(0, 0);
         if (testEnv.equals("local")) {
@@ -55,6 +54,9 @@ public class TestContext {
                     ChromeOptions chromeOptions = new ChromeOptions();
                     chromeOptions.addArguments("--start-maximized");
                     chromeOptions.setExperimentalOption("prefs", chromePreferences);
+                    if (isJenkins) {
+                        chromeOptions.setBinary("/usr/bin/chromium-browser");
+                    }
                     System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
                     if (isHeadless) {
                         chromeOptions.setHeadless(true);
