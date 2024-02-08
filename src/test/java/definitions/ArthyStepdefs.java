@@ -13,7 +13,7 @@ import static support.TestContext.getDriver;
 
 public class ArthyStepdefs {
 
-    @Then("I confirm user account with email {string}")
+    @Then(" AJ I confirm user account with email {string}")
     public void iConfirmUserAccountWithEmail(String email) throws SQLException, IOException {
         String activationString = Helper.getAccessToken(email);
         String[] str = activationString.split(";");
@@ -23,7 +23,7 @@ public class ArthyStepdefs {
     }
 
 
-    @And("I create {int} options")
+    @And("AJ I create {int} options")
     public void iCreateOptions(int numberOfOptions) {
         for (int i = 0; i < numberOfOptions; i++) {
             WebElement addOptionButton = getDriver().findElement(By.xpath("//button/span[contains(text(), 'Add Option')]"));
@@ -33,7 +33,7 @@ public class ArthyStepdefs {
         }
     }
 
-    @And("I choose {int} as correct option")
+    @And("AJ I choose {int} as correct option")
     public void iChooseAsCorrectOption(int correctOption) {
 //        List<WebElement> optionsList = getDriver().findElements(By.xpath("//textarea[@formcontrolname='option']"));
 //
