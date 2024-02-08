@@ -6,6 +6,8 @@ import cucumber.api.java.en.And;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static support.TestContext.getDriver;
 
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -42,7 +44,18 @@ public class Kiian_StepDefs implements En {
         new WebDriverWait(getDriver(), 10, 200).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
     }
 
-    @Then("Kiian I type {string} into element with xpath {string}")
-    public void kiianITypePasswordIntoElementWithXpath(String password, String xpath) {
+    @Then("Kiian the entered data into elements with xpath {string} and {string} should match")
+    public void kiianTheEnteredDataIntoElementsWithXpathAndShouldMatch(String xpath1, String xpath2) {
+        var actualText1 = getDriver().findElement(By.xpath(xpath1)).getAttribute("value");
+        var actualText2 = getDriver().findElement(By.xpath(xpath2)).getAttribute("value");
+        assertThat(actualText1).isEqualTo(actualText2);
+
+    }
+
+    @Then("Kiian the entered data into elements with xpath {string} and {string} should not match")
+    public void kiianTheEnteredDataIntoElementsWithXpathAndShouldNotMatch(String xpath1, String xpath2) {
+        var actualText1 = getDriver().findElement(By.xpath(xpath1)).getAttribute("value");
+        var actualText2 = getDriver().findElement(By.xpath(xpath2)).getAttribute("value");
+        assertThat(actualText1).isNotEqualTo(actualText2);
     }
 }
