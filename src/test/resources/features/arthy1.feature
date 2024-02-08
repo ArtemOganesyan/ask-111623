@@ -184,4 +184,3 @@ Feature: Smoke steps
     Then I click on element with xpath "//span[contains(text(),'Details')]/.."
     Then element with xpath "//div[contains(text(),'ASSESSMENT PASSED')]" should be displayed
     Then I wait for 1 sec
-
