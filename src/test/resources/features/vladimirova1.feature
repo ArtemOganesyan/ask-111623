@@ -1,4 +1,4 @@
-@katyag_feature1
+@av_textual_questions_points_test_set_textual_can_not_graded_automatically
 Feature: AV Textual questions - points test set: Verify textual questions can not be graded automatically
 
   @av_textual_can_not_graded_automatically_teacher
@@ -45,7 +45,7 @@ Feature: AV Textual questions - points test set: Verify textual questions can no
     And AV I log out of teacher's account
     Examples:
       | quizName   |
-      | Ava auto text quest |
+      | Ava auto text quest 1234 |
 
 
   @av_textual_can_not_graded_automatically_student
@@ -69,9 +69,50 @@ Feature: AV Textual questions - points test set: Verify textual questions can no
     And AV I wait for element with xpath "//h4[contains(text(),'My Grades')]" to be visible
     And I wait for element with xpath "//td[contains(text(),'<quizName>')]//ancestor::tr//child::td[@class='result']" to be present
     And I scroll to the element with xpath "//td[contains(text(),'<quizName>')]//ancestor::tr" with offset 500
-    Then element with xpath "//td[contains(text(),'<quizName>')]//ancestor::tr//child::td[@class='result']" should contain text "PENDING"
-    Then element with xpath "//td[contains(text(),'<quizName>')]//ancestor::tr//child::td[@class='ng-star-inserted']" should contain text "-"
+    Then AV assignment with quiz name "<quizName>" should have result "PENDING"
+    Then AV assignment with quiz name "<quizName>" should have score "-"
 
     Examples:
       | quizName   |
-      | Ava auto text quest |
+      | Ava auto text quest 1234 |
+
+  @av_if_student_can_see_graded_quiz_with_text
+  Scenario Outline: AV Verify student can see graded quiz with textual question
+    Given AV I navigate to "login" page
+    Then I should see page title contains "Assessment Control @ Portnov"
+    When AV I login into teacher account
+    Then AV I verify user name "Anastasia Vladimirova" and role "TEACHER"
+    And AV I navigate to "Submissions" page
+    And I wait for 3 sec
+    And AV I wait for element with xpath "//h4[contains(text(),'Submissions')]" to be visible
+    And AV I wait for element with xpath "//div[contains(text(),'For Grade')]" to be visible
+    And I click on element with xpath "//mat-menu//ancestor::th/span/mat-icon"
+    And I scroll to the element with xpath "//span[contains(text(),'team5')]" with offset 1000
+    And I click on element with xpath "//span[contains(text(),'11.16')]"
+    And AV I click on Grade button for assignment with quiz name  "<quizName>"
+    And AV I wait for element with xpath "//td[contains(text(),'<quizName>')]" to be visible
+    And AV I add 5 points for question number 1
+    And AV I add 5 points for question number 2
+    And AV I add 5 points for question number 3
+    And I click on element with xpath "//button[@type='submit']"
+    And AV I log out of teacher's account
+    And I wait for element with xpath "//h3[contains(text(),'Assessment Control')]" to be present
+    And AV I login into Ava Stud student account
+    And AV I navigate to "My Grades" page
+    And I wait for element with xpath "//h4[contains(text(),'My Grades')]" to be present
+    And AV I wait for element with xpath "//h4[contains(text(),'My Grades')]" to be visible
+    And I wait for element with xpath "//tr[last()]//child::button" to be present
+    And I scroll to the element with xpath "//tr[last()]//child::button" with offset 500
+    And I click on element with xpath "//tr[last()]//child::button"
+    Then element with xpath "//td[contains(text(),'<quizName>')]" should be displayed
+    Then element with xpath "//div[@class='result']//child::div[contains(text(),'ASSESSMENT PASSED')]" should be displayed
+    Then AV Actual score points amount should be "greater" than Passing score points amount
+    Then AV Actual percentage amount should be "greater" than Passing percentage points amount
+
+    Examples:
+      | quizName   |
+      | Ava auto text quest 1234 |
+
+
+
+
