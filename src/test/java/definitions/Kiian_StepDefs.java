@@ -30,15 +30,6 @@ public class Kiian_StepDefs implements En {
         }
     }
 
-    @Then("Kiian I confirm email address {string}")
-    public void kiianIConfirmEmailAddress(String email) throws SQLException, IOException {
-        String activationString = Helper.getAccessToken(email);
-        String[] str = activationString.split(";");
-        int userId = Integer.parseInt(str[0]);
-        String activationCode = str[1];
-        Helper.activateUser(userId, activationCode);
-    }
-
     @Then("Kiian I wait for element with xpath {string} to be displayed")
     public void iWaitForElementWithXpathToBeDisplayed(String xpath) {
         new WebDriverWait(getDriver(), 10, 200).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
