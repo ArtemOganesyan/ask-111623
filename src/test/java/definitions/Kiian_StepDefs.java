@@ -3,9 +3,8 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import cucumber.api.java8.En;
 import cucumber.api.java.en.And;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static support.TestContext.getDriver;
@@ -13,10 +12,22 @@ import static support.TestContext.getDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import support.Helper;
+
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
 public class Kiian_StepDefs implements En {
+
+    @Then("Kiian I confirm email address {string}")
+    public void iConfirmUserAccountWithEmail(String email) throws SQLException, IOException {
+        String activationString = Helper.getAccessToken(email);
+        String[] str = activationString.split(";");
+        int userId = Integer.parseInt(str[0]);
+        String activationCode = str[1];
+        Helper.activateUser(userId, activationCode);
+    }
+
     @And("Kiian I move question slider {int} step to the {string}")
     public void iMoveSliderStepToThe(int steps, String direction) {
         WebElement slider = getDriver().findElement(By.xpath("//*[contains(text(), 'Q1')]/../../..//mat-slider"));
@@ -48,5 +59,12 @@ public class Kiian_StepDefs implements En {
         var actualText1 = getDriver().findElement(By.xpath(xpath1)).getAttribute("value");
         var actualText2 = getDriver().findElement(By.xpath(xpath2)).getAttribute("value");
         assertThat(actualText1).isNotEqualTo(actualText2);
+    }
+
+    @Then("Kiian I take screenshot$")
+    public void iTakeScreenshot() throws Exception {
+        TakesScreenshot screenshotTaker = (TakesScreenshot) getDriver();
+        File screenshot = screenshotTaker.getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(screenshot, new File("target/cucumber/screenshot " + System.currentTimeMillis() + ".png"));
     }
 }
