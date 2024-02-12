@@ -25,9 +25,13 @@ Feature: Kiian Single Choice Question - Other
     Then I click on element with xpath "//span[contains(text(),' text area option for')]/../../../mat-checkbox/label/div"
     Then I click on element with xpath "//*[contains(text(),'Save')]/.."
     Then I wait for 2 sec
-#    Then I scroll to the element with xpath "//mat-panel-title[contains(text(), '<QuizName>')]" with offset 2
-#    Then I click on element with xpath "//mat-panel-title[contains(text(), '<QuizName>')]"
-
+    Then I wait for element with xpath "//h4[contains(text(),'List of Quizzes')]" to be present
+    Then I scroll to the element with xpath "//*[contains(text(),'<QuizName>')]/../.." with offset 2
+    Then I click on element with xpath "//*[contains(text(),'<QuizName>')]/../.."
+    Then Kiian I wait for element with xpath "//*[contains(text(),'<QuizName>')]/../../..//*[contains(text(),'Preview')]/.." to be displayed
+    Then I click on element with xpath "//*[contains(text(),'<QuizName>')]/../../..//*[contains(text(),'Preview')]/.."
+    Then I wait for element with xpath "//mat-dialog-container" to be present
+    Then element with xpath "//div/textarea" should be displayed
 
   Examples:
     | QuizName    |
@@ -52,12 +56,17 @@ Feature: Kiian Single Choice Question - Other
     Then I click on element with xpath "//span[contains(text(),' text area option for')]/../../../mat-checkbox/label/div"
     Then I click on element with xpath "//*[contains(text(),'Save')]/.."
     Then I wait for 2 sec
+    Then I wait for element with xpath "//h4[contains(text(),'List of Quizzes')]" to be present
+    Then I scroll to the element with xpath "//*[contains(text(),'<QuizName>')]/../.." with offset 2
+    Then I click on element with xpath "//*[contains(text(),'<QuizName>')]/../.."
+    Then Kiian I wait for element with xpath "//*[contains(text(),'<QuizName>')]/../../..//*[contains(text(),'Preview')]/.." to be displayed
+    Then I click on element with xpath "//*[contains(text(),'<QuizName>')]/../../..//*[contains(text(),'Preview')]/.."
+    Then I wait for element with xpath "//mat-dialog-container" to be present
+    Then element with xpath "//div/textarea" should not be present
 
     Examples:
       | QuizName     |
       | QuizNew11161 |
-
-
 
   @kiian_deleteQuiz
   Scenario Outline: Kiian_Deleting new Quiz

@@ -44,4 +44,32 @@ public class Helper {
             System.out.println("Error occurred while trying to send get request");
         }
     }
+    public static boolean getUserPresenceInDB(String email) throws SQLException{
+        Boolean result = false;
+        Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+        String sql = "SELECT id FROM users WHERE email = ?";
+        try(PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setString(1, email);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                var dbResult = rs.getString("id");
+                if (dbResult != null) return true;
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+    public static void deleteUserByEmailfromDB(String email) throws SQLException {
+        Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+        String sql = "DELETE FROM users WHERE email = ?";
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setString(1, email);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

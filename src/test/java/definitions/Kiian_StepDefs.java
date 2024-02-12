@@ -67,4 +67,15 @@ public class Kiian_StepDefs implements En {
         File screenshot = screenshotTaker.getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(screenshot, new File("target/cucumber/screenshot " + System.currentTimeMillis() + ".png"));
     }
+
+     @Then("Kiian I check if User with email {string} exists in Data Base")
+    public void kiianICheckIfUserWithEmailExistsInDataBase(String email) throws SQLException {
+        var userExist = Helper.getUserPresenceInDB(email);
+        assertThat(userExist).isTrue();
+    }
+
+    @Then("Kiian I delete created User with email {string}")
+    public void kiianIDeleteCreatedUserWithEmail(String email) throws SQLException {
+         Helper.deleteUserByEmailfromDB(email);
+    }
 }

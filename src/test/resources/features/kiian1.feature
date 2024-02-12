@@ -1,8 +1,8 @@
 @kiianRegistrationPswConfirmPsw
 Feature: Kiian registration Psw_confirmPsw
 
-  @registerPswPositive
-  Scenario Outline: registering with valid psw
+  @kiianRegisterPswPositive
+  Scenario Outline: Kiian registering with valid psw
     Given I open url "http://ask-stage.portnov.com"
     Then I click on element with xpath "//a[@href='#/registration']"
     Then I type "<FirstName>" into element with xpath "//input[@formcontrolname='firstName']"
@@ -22,6 +22,8 @@ Feature: Kiian registration Psw_confirmPsw
     And I click on element with xpath "//button[@type='submit']"
     Then I wait for 2 sec
     And element with xpath "//header/div/h3" should have text as "<FirstName> <LastName>"
+    Then Kiian I check if User with email "<Email>" exists in Data Base
+#    Then Kiian I delete created User with email "<Email>"
 
     Examples:
       | FirstName  | LastName | Email                | Group | Password                         | ConfirmPsw                       |
@@ -33,8 +35,8 @@ Feature: Kiian registration Psw_confirmPsw
       | Billq      | West     | bill6.west@gmail.com | D234  | МійПасворд                       | МійПасворд                       |
 
 
-  @registerPswNegative
-  Scenario Outline: registering with invalid psw
+  @kiianRegisterPswNegative
+  Scenario Outline: Kiian registering with invalid psw
     Given I open url "http://ask-stage.portnov.com"
     Then I click on element with xpath "//a[@href='#/registration']"
     Then I wait for 2 sec
@@ -58,8 +60,8 @@ Feature: Kiian registration Psw_confirmPsw
       | Bill      | West     | bill.west@gmail.com | D234  | "Qwe2"                              | ""         | Too short. Should be at least 5 to 32 characters |
       | Bill      | West     | bill.west@gmail.com | D234  | "12Ert678901234567890123456789!@##" | ""         | Too long. Should be at least 5 to 32 characters  |
 
-  @registerPswNegCaseSensitivity
-  Scenario Outline: registering Psw Case Sensitivity
+  @kiianRegisterPswNegCaseSensitivity
+  Scenario Outline: Kiian registering Psw Case Sensitivity
     Given I open url "http://ask-stage.portnov.com"
     Then I click on element with xpath "//a[@href='#/registration']"
     Then I type "<FirstName>" into element with xpath "//input[@formcontrolname='firstName']"
@@ -85,8 +87,8 @@ Feature: Kiian registration Psw_confirmPsw
       | Billp      | West     | bill9.west@gmail.com | D234  | Qwertyy    | Qwertyy    | qWERTYY   | 'Authentication failed. User not found or password does not match '|
 
 
-  @registerPswConfPswMatch
-  Scenario Outline: Psw and ConfPsw Match
+  @kiianRegisterPswConfPswMatch
+  Scenario Outline: Kiian Psw and ConfPsw Match
     Given I open url "http://ask-stage.portnov.com"
     Then I click on element with xpath "//a[@href='#/registration']"
     Then I type "<FirstName>" into element with xpath "//input[@formcontrolname='firstName']"
@@ -103,8 +105,8 @@ Feature: Kiian registration Psw_confirmPsw
       | FirstName | LastName | Email                 | Group | Password         | ConfirmPsw   |
       | Billb      | West     | bill11.west@gmail.com | D234  | 123Qwerty        | 123Qwerty    |
 
-  @registerPswConfPswDoNotMatch_bothError
-  Scenario Outline: Psw and ConfPsw don't Match_bothError
+  @kiianRegisterPswConfPswDoNotMatch_bothError
+  Scenario Outline: Kiian Psw and ConfPsw don't Match_bothError
     Given I open url "http://ask-stage.portnov.com"
     Then I click on element with xpath "//a[@href='#/registration']"
     Then I wait for 2 sec
@@ -131,8 +133,8 @@ Feature: Kiian registration Psw_confirmPsw
       | Bill      | West     | bill.west@gmail.com | D234  | "R@12"       | "R@123!"   | Too short. Should be at least 5 to 32 characters | Entered passwords should match |
 
 
-  @registerPswConfPswDoNotMatch_ConfirmPswError
-  Scenario Outline: Psw and ConfPsw don't Match_ConfirmPswError
+  @kiianRegisterPswConfPswDoNotMatch_ConfirmPswError
+  Scenario Outline: Kiian Psw and ConfPsw don't Match_ConfirmPswError
     Given I open url "http://ask-stage.portnov.com"
     Then I click on element with xpath "//a[@href='#/registration']"
     Then I wait for 2 sec
@@ -155,42 +157,3 @@ Feature: Kiian registration Psw_confirmPsw
       | Bill      | West     | bill.west@gmail.com | D234  | "123Qwert"   | "123Qwerty"| Entered passwords should match |
       | Bill      | West     | bill.west@gmail.com | D234  | "R@123!"     | ""         | This field is required         |
       | Bill      | West     | bill.west@gmail.com | D234  | "R@123!"     | "  "       | Whitespaces are not allowed    |
-
-
-  @deleteUser
-  Scenario Outline: delete User
-    Given I open url "http://ask-stage.portnov.com"
-    Then I type "Teacher1_369@fugmi.com" into element with xpath "//*[@formcontrolname='email']"
-    Then I type "123Qwerty" into element with xpath "//*[@formcontrolname='password']"
-    And I click on element with xpath "//button[@type='submit']"
-    Then Kiian I wait for element with xpath "//header/div/h3[text()='Alice Teacher']" to be displayed
-    And element with xpath "//header/div/h3" should have text as "Alice Teacher"
-    Then I click on element with xpath "//h5[contains(text(), 'Management')]"
-    Then Kiian I wait for element with xpath "//h4[contains(text(),'Management')]" to be displayed
-    Then I wait for 2 sec
-    Then I scroll to the element with xpath "//h4[contains(text(), '<FirstName> <LastName>')]" with offset 2
-#    Then Kiian I wait for element with xpath "//h4[contains(text(), '<FirstName> <LastName>')]" to be displayed
-    Then I click on element with xpath "//h4[contains(text(),'<FirstName> <LastName>')]/.."
-    Then I wait for 2 sec
-    Then I click on element with xpath "//mat-icon[@role='img'][text()='settings']/../../../button"
-    Then Kiian I wait for element with xpath "//mat-icon[text()='delete']/.." to be displayed
-    Then I wait for 3 sec
-    Then I click on element with xpath "//mat-icon[text()='delete']/.."
-    Then Kiian I wait for element with xpath "//mat-dialog-container[@id='mat-dialog-0']" to be displayed
-    Then Kiian I wait for element with xpath "//span[text()='Delete']" to be displayed
-    Then I click on element with xpath "//span[text()='Delete']"
-    Then I wait for 2 sec
-
-    Examples:
-      | FirstName  | LastName |
-      | Billy      | West     |
-      | Billi      | West     |
-      | Bille      | West     |
-      | Billa      | West     |
-##      | Bills      | West     |
-      | Billq      | West     |
-#      | Bill       | West     |
-      | Billu      | West     |
-      | Billd      | West     |
-      | Billp      | West     |
-      | Billb      | West     |
