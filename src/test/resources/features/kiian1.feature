@@ -3,6 +3,7 @@ Feature: Kiian registration Psw_confirmPsw
 
   @kiianRegisterPswPositive
   Scenario Outline: Kiian registering with valid psw
+    Given Kiian I delete created User with email "<Email>"
     Given I open url "http://ask-stage.portnov.com"
     Then I click on element with xpath "//a[@href='#/registration']"
     Then I type "<FirstName>" into element with xpath "//input[@formcontrolname='firstName']"
@@ -11,7 +12,7 @@ Feature: Kiian registration Psw_confirmPsw
     Then I type "<Group>" into element with xpath "//input[@formcontrolname='group']"
     Then I type "<Password>" into element with xpath "//input[@formcontrolname='password']"
     Then I type "<ConfirmPsw>" into element with xpath "//input[@formcontrolname='confirmPassword']"
-    Then Kiian I take screenshot
+#    Then Kiian I take screenshot
     Then I click on element with xpath "//button[@type='submit']"
     Then Kiian I confirm email address "<Email>"
     Then  Kiian I wait for element with xpath "//mat-card/h4[text()='You have been Registered.']" to be displayed
@@ -23,16 +24,16 @@ Feature: Kiian registration Psw_confirmPsw
     Then I wait for 2 sec
     And element with xpath "//header/div/h3" should have text as "<FirstName> <LastName>"
     Then Kiian I check if User with email "<Email>" exists in Data Base
-#    Then Kiian I delete created User with email "<Email>"
+    Then Kiian I delete created User with email "<Email>"
 
     Examples:
       | FirstName  | LastName | Email                | Group | Password                         | ConfirmPsw                       |
       | Billy      | West     | bill1.west@gmail.com | D234  | 123Qwerty                        | 123Qwerty                        |
-      | Billi      | West     | bill2.west@gmail.com | D234  | 12345                            | 12345                            |
-      | Bille      | West     | bill3.west@gmail.com | D234  | Qwertyy                          | Qwertyy                          |
-      | Billa      | West     | bill4.west@gmail.com | D234  | 12Ert678901234567890123456789!@# | 12Ert678901234567890123456789!@# |
-#      | Bills      | West     | bill5.west@gmail.com | D234  | !"#$%&'()*+,-./:;<=>?@[]^_`{\|}~ | !"#$%&'()*+,-./:;<=>?@[]^_`{\|}~ |
-      | Billq      | West     | bill6.west@gmail.com | D234  | МійПасворд                       | МійПасворд                       |
+#      | Billi      | West     | bill2.west@gmail.com | D234  | 12345                            | 12345                            |
+#      | Bille      | West     | bill3.west@gmail.com | D234  | Qwertyy                          | Qwertyy                          |
+#      | Billa      | West     | bill4.west@gmail.com | D234  | 12Ert678901234567890123456789!@# | 12Ert678901234567890123456789!@# |
+##      | Bills      | West     | bill5.west@gmail.com | D234  | !"#$%&'()*+,-./:;<=>?@[]^_`{\|}~ | !"#$%&'()*+,-./:;<=>?@[]^_`{\|}~ |
+#      | Billq      | West     | bill6.west@gmail.com | D234  | МійПасворд                       | МійПасворд                       |
 
 
   @kiianRegisterPswNegative

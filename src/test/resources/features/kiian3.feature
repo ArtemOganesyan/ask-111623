@@ -1,5 +1,5 @@
 @kiianDeleteUsers
-  Feature:kiiandeleteUser
+  Feature:kiianDeleteUser
 
     @kiianDeleteCreatedUsers
       Scenario Outline: Kiian delete created Users

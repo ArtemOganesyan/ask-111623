@@ -75,7 +75,7 @@ public class Kiian_StepDefs implements En {
     }
 
     @Then("Kiian I delete created User with email {string}")
-    public void kiianIDeleteCreatedUserWithEmail(String email) throws SQLException {
+    public void kiianIDeleteCreatedUserWithEmail(String email) throws SQLException, IOException {
          Helper.deleteUserByEmailfromDB(email);
     }
 }
