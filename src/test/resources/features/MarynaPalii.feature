@@ -13,7 +13,8 @@ Background: MP Teacher Login
     Then MP I click on element with xpath "//h5[contains(text(), 'Assignments')]"
     Then MP element with xpath "//h4[contains(text(),'List of Assignments')]" should be displayed
     Then MP I wait for 2 sec
-    Then MP I wait for element with xpath "//*[contains(text(), 'Create New Assignment')]/.." to be present
+    Then MP I wait for element with xpath "//*[contains(text(), 'Create New Assignment')]/.." to be displayed
+    Then MP I wait for 7 sec
     Then MP I click on element with xpath "//*[contains(text(), 'Create New Assignment')]/.."
     Then MP I wait for element with xpath "//h4[contains(text(), 'Give Assignment')]" to be present
     Then MP I click on element with xpath "//span[contains(text(),'All')]/../../.."
@@ -27,8 +28,8 @@ Background: MP Teacher Login
     Then MP I click on element with xpath "//div/div[contains(string(),'Maryna1 Palii1')]/../mat-pseudo-checkbox"
     Then MP I wait for element with xpath "//button[@type='submit']" to be present
     Then MP I click on element with xpath "//button[@type='submit']"
-    Then MP I wait for 3 sec
     Then MP I wait for element with xpath "//span[contains(text(),'Test Maryna Palii 4')]" to be present
+    Then MP element with xpath "//span[contains(text(),'Test Maryna Palii 4')]" should be displayed
 
   Scenario: MP Teacher Can Assign a Quiz to Multiple Students
     Then MP I wait for 1 sec
@@ -37,6 +38,7 @@ Background: MP Teacher Login
     Then MP element with xpath "//h4[contains(text(),'List of Assignments')]" should be displayed
     Then MP I wait for 2 sec
     Then MP element with xpath "//*[contains(text(), 'Create New Assignment')]/.." should be displayed
+    Then MP I wait for 7 sec
     Then MP I click on element with xpath "//*[contains(text(), 'Create New Assignment')]/.."
     Then MP element with xpath "//h4[contains(text(), 'Give Assignment')]" should be displayed
     Then MP I click on element with xpath "//span[contains(text(),'All')]/../../.."
@@ -51,8 +53,8 @@ Background: MP Teacher Login
     Then MP I click on element with xpath "//div/div[contains(string(),'Maryna2 Palii2')]/../mat-pseudo-checkbox"
     Then MP I wait for element with xpath "//button[@type='submit']" to be displayed
     Then MP I click on element with xpath "//button[@type='submit']"
-    Then MP I wait for 3 sec
-    Then MP I wait for element with xpath "//span[contains(text(),'Test Maryna Palii 4')]" to be displayed
+    Then MP I wait for element with xpath "//span[contains(text(),'Test Maryna Palii 4')]" to be present
+    Then MP element with xpath "//span[contains(text(),'Test Maryna Palii 4')]" should be displayed
 
   Scenario: MP teacher can assign a quiz to a group of students
     Then MP I wait for 1 sec
@@ -60,7 +62,8 @@ Background: MP Teacher Login
     Then MP I click on element with xpath "//h5[contains(text(), 'Assignments')]"
     Then MP element with xpath "//h4[contains(text(),'List of Assignments')]" should be displayed
     Then MP I wait for 2 sec
-    Then MP I wait for element with xpath "//*[contains(text(), 'Create New Assignment')]/.." to be present
+    Then MP I wait for element with xpath "//*[contains(text(), 'Create New Assignment')]/.." to be displayed
+    Then MP I wait for 7 sec
     Then MP I click on element with xpath "//*[contains(text(), 'Create New Assignment')]/.."
     Then MP I wait for element with xpath "//h4[contains(text(), 'Give Assignment')]" to be present
     Then MP I click on element with xpath "//span[contains(text(),'All')]/../../.."
@@ -74,7 +77,8 @@ Background: MP Teacher Login
     Then MP I click on element with xpath "//span[contains(text(),'Select All')]"
     Then MP I wait for element with xpath "//button[@type='submit']" to be present
     Then MP I click on element with xpath "//button[@type='submit']"
-    Then MP I wait for 3 sec
+    Then MP I wait for element with xpath "//span[contains(text(),'Test Maryna Palii 4')]" to be present
+    Then MP element with xpath "//span[contains(text(),'Test Maryna Palii 4')]" should be displayed
 
   Scenario: MP teacher can assign a quiz to all students
     Then MP I wait for 1 sec
@@ -83,6 +87,7 @@ Background: MP Teacher Login
     Then MP element with xpath "//h4[contains(text(),'List of Assignments')]" should be displayed
     Then MP I wait for 2 sec
     Then MP I wait for element with xpath "//*[contains(text(), 'Create New Assignment')]/.." to be present
+    Then MP I wait for 7 sec
     Then MP I click on element with xpath "//*[contains(text(), 'Create New Assignment')]/.."
     Then MP I wait for element with xpath "//h4[contains(text(), 'Give Assignment')]" to be present
     Then MP I click on element with xpath "//span[contains(text(),'Select Quiz To Assign')]/../../div[2]"
@@ -92,7 +97,8 @@ Background: MP Teacher Login
     Then MP I click on element with xpath "//span[contains(text(),'Select All')]"
     Then MP I wait for element with xpath "//button[@type='submit']" to be present
     Then MP I click on element with xpath "//button[@type='submit']"
-    Then MP I wait for 3 sec
+    Then MP I wait for element with xpath "//span[contains(text(),'Test Maryna Palii 4')]" to be present
+    Then MP element with xpath "//span[contains(text(),'Test Maryna Palii 4')]" should be displayed
 
   Scenario: MP teacher CANNOT create an assignment with an empty field for Quiz (negative testing)
     Then MP I wait for 1 sec
@@ -101,6 +107,7 @@ Background: MP Teacher Login
     Then MP element with xpath "//h4[contains(text(),'List of Assignments')]" should be displayed
     Then MP I wait for 2 sec
     Then MP I wait for element with xpath "//*[contains(text(), 'Create New Assignment')]/.." to be present
+    Then MP I wait for 7 sec
     Then MP I click on element with xpath "//*[contains(text(), 'Create New Assignment')]/.."
     Then MP I wait for element with xpath "//h4[contains(text(), 'Give Assignment')]" to be present
     Then MP I click on element with xpath "//span[contains(text(),'All')]/../../.."
@@ -111,7 +118,6 @@ Background: MP Teacher Login
     Then MP I wait for element with xpath "//button[@type='submit']" to be present
     Then MP I click on element with xpath "//button[@type='submit']"
     Then MP element with xpath "//*[contains(text(), 'This field is required')]/.." should be displayed
-    Then MP I wait for 3 sec
 
   Scenario: MP teacher CANNOT create an assignment without selecting a student (negative testing)
     Then MP I wait for 1 sec
@@ -119,8 +125,10 @@ Background: MP Teacher Login
     Then MP I click on element with xpath "//h5[contains(text(), 'Assignments')]"
     Then MP element with xpath "//h4[contains(text(),'List of Assignments')]" should be displayed
     Then MP I wait for 2 sec
-    Then MP I wait for element with xpath "//*[contains(text(), 'Create New Assignment')]/.." to be present
-    Then MP I click on element with xpath "//*[contains(text(), 'Create New Assignment')]/.."
+    Then MP I wait for element with xpath "//span[contains(text(), 'Create New Assignment')]/.." to be present
+    Then MP I wait for element with xpath "//span[contains(text(), 'Create New Assignment')]/.." to be displayed
+    Then MP I wait for 7 sec
+    Then MP I click on element with xpath "//span[contains(text(), 'Create New Assignment')]/.."
     Then MP I wait for element with xpath "//h4[contains(text(), 'Give Assignment')]" to be present
     Then MP I click on element with xpath "//span[contains(text(),'All')]/../../.."
     Then MP I wait for element with xpath "//*[@value='ALL']/../../.." to be present
@@ -133,8 +141,7 @@ Background: MP Teacher Login
     Then MP I wait for element with xpath "//button[@type='submit']" to be present
     Then MP I click on element with xpath "//button[@type='submit']"
     Then MP element with xpath "//*[contains(text(), 'Select at least one Student')]/.." should be displayed
-    Then MP I wait for 3 sec
-
+    
 
 
 
